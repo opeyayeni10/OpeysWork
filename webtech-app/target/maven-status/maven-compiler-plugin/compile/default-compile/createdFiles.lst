@@ -1,0 +1,11 @@
+com\webTechProject\webtech_app\model\Book.class
+com\webTechProject\webtech_app\model\Credentials.class
+com\webTechProject\webtech_app\model\Users.class
+com\webTechProject\webtech_app\data\BookDAO.class
+com\webTechProject\webtech_app\model\Credentials_.class
+com\webTechProject\webtech_app\rest\JaxRsActivator.class
+com\webTechProject\webtech_app\model\Book_.class
+com\webTechProject\webtech_app\rest\UserWS.class
+com\webTechProject\webtech_app\model\Users_.class
+com\webTechProject\webtech_app\rest\BookWS.class
+com\webTechProject\webtech_app\data\UserDAO.class

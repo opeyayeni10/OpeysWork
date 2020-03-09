@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="resources/images/title-img.png">
+<link rel="stylesheet" href="resources/css/bootstrap.css">
+<script src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/popper.min.js"></script>
+<script src="resources/js/bootstrapV4.js"></script>
+<script src="resources/js/all.js"></script>
+<script src="resources/js/datatables.min.js"></script>
+<script src="resources/js/script.js"></script>
+
+
+
+<link rel="stylesheet" href="resources/css/style.css">
+<title>Admin Dashboard</title>
+</head>
+<body>
+
+	<!-- LOGIN MODAL -->
+	<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+      <div class="form-group">
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input type="text" id="usernameEG" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Username</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          <input type="password" id="passwordEG" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Password</label>
+        </div>
+		
+		<div class="modal-footer d-flex justify-content-center">
+        <input type="button" id="loginBtn" value="Login" class="form-control">
+      	</div>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+
+
+	<!-- navbar -->
+	<div id="workArea">
+		<nav class="navbar navbar-expand-md navbar-light">
+			<button class="navbar-toggler ml-auto mb-2 bg-light" type="button"
+				data-toggle="collapse" data-target="#myNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<div class="container-fluid">
+					<div class="row">
+						<!-- sidebar -->
+						<div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
+							<a href="#"
+								class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Web3
+								2018</a>
+							<div class="bottom-border pb-3">
+								<img src="resources/images/mayo.jpeg" width="50"
+									class="rounded-circle mr-3"> <a href="#"
+									class="text-white">Joe Blogs</a>
+							</div>
+							<ul class="navbar-nav flex-column mt-4">
+								<li class="nav-item"><a href="#"
+									class="nav-link text-white p-3 mb-2 current"><i
+										class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
+								<li class="nav-item"><a href="#"
+									class="nav-link text-white p-3 mb-2 sidebar-link"><i
+										class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
+								<li class="nav-item"><a href="#"
+									class="nav-link text-white p-3 mb-2 sidebar-link"><i
+										class="fas fa-shopping-cart text-light fa-lg mr-3"></i>Sales</a></li>
+								<li class="nav-item"><a href="#"
+									class="nav-link text-white p-3 mb-2 sidebar-link"><i
+										class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
+								<li class="nav-item"><a href="#"
+									class="nav-link text-white p-3 mb-2 sidebar-link"><i
+										class="fas fa-chart-bar text-light fa-lg mr-3"></i>Charts</a></li>
+								<li class="nav-item"><a href="#"
+									class="nav-link text-white p-3 mb-2 sidebar-link"><i
+										class="fas fa-table text-light fa-lg mr-3"></i>Tables</a></li>
+								<li class="nav-item"><a href="#"
+									class="nav-link text-white p-3 mb-2 sidebar-link"><i
+										class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
+								<li class="nav-item"><a href="#"
+									class="nav-link text-white p-3 mb-2 sidebar-link"><i
+										class="fas fa-file-alt text-light fa-lg mr-3"></i>Documentation</a></li>
+							</ul>
+						</div>
+						<!-- end of sidebar -->
+
+						<!-- top-nav -->
+						<div
+							class="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark fixed-top py-2 top-navbar">
+							<div class="row align-items-center">
+								<div class="col-md-4">
+									<h4 class="text-light text-uppercase mb-0">Dashboard</h4>
+								</div>
+
+								<div class="col-md-8">
+									<ul class="navbar-nav">
+										<li class="nav-item ml-md-auto"><a href="#"
+											class="nav-link" data-toggle="modal" data-target="#sign-out"><i
+												class="fas fa-sign-out-alt text-danger fa-lg"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- end of top-nav -->
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- end of navbar -->
+
+		<!-- modal -->
+		<div class="modal fade" id="sign-out">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Want to leave?</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">Press logout to leave</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Stay
+							Here</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end of modal -->
+
+		<!-- modal -->
+		<div id="myModal" class="modal hide fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div id="bookForm" class="modal-body">
+						<div class="modal-header">
+							<h6 class="modal-title">Book Details</h6>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="exampleInputEmail1">Book ID</label> <input
+									id="bookId" type="text" class="form-control"
+									placeholder="Book ID" disabled>
+							</div>
+							<div class="col">
+								<label for="exampleInputEmail1">ISBN</label> <input id="isbn"
+									type="text" class="form-control" placeholder="ISBN" required
+									disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="exampleInputEmail1">Book Name</label> <input
+									id="bookName" type="text" class="form-control"
+									placeholder="Book Name" required disabled>
+							</div>
+							<div class="col">
+								<label for="exampleInputEmail1">Author</label> <input
+									id="author" type="text" class="form-control" required
+									placeholder="Type" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="exampleInputEmail1">Category</label> <input
+									id="category" type="text" required class="form-control"
+									placeholder="Category" disabled>
+							</div>
+							<div class="col">
+								<label for="exampleInputEmail1">Year Published</label> <input
+									id="year" type="text" required class="form-control"
+									placeholder="Year Published" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="exampleInputEmail1">Publisher</label> <input
+									id="publisher" type="text" required class="form-control"
+									placeholder="Publisher" disabled>
+							</div>
+							<div class="col"></div>
+						</div>
+						<div id="bookFormFooter" class="modal-footer"
+							style="display: none">
+							<button id="addBook" type="button" class="btn btn-success">Add</button>
+							<button id="newBook" type="button" class="btn btn-success">New</button>
+							<button id="updateBook" type="button" class="btn btn-info">Update</button>
+							<button id="editBook" type="button" class="btn btn-info">Edit</button>
+							<button id="deleteBook" type="button" class="btn btn-danger">Delete</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+
+					<div id="userForm" class="modal-body">
+						<div class="modal-header">
+							<h6 class="modal-title">User Details</h6>
+						</div>
+						<div class="pic" style="text-align: center">
+							<img id="picture" src="" height="150" width="200" />
+						</div>
+						<div class="row">
+							<div class="col">
+
+								<label for="exampleInputEmail1">User ID</label> <input
+									id="userId" type="text" class="form-control"
+									placeholder="User ID" disabled>
+							</div>
+							<div class="col">
+								<label for="exampleInputEmail1">First Name</label> <input
+									id="firstName" type="text" class="form-control"
+									placeholder="First Name" required disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="exampleInputEmail1">Last Name</label> <input
+									id="lastName" type="text" class="form-control"
+									placeholder="Last Name" required disabled>
+							</div>
+							<div class="col">
+								<label for="exampleInputEmail1">User Name</label> <input
+									id="userName" type="text" class="form-control" required
+									placeholder="User Name" disabled>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="exampleInputEmail1">User Type</label> <input
+									id="userType" type="text" required class="form-control"
+									placeholder="User Type" disabled>
+							</div>
+							<div class="col">
+								<label for="exampleInputEmail1">Password</label> <input
+									id="Password" type="password" required class="form-control"
+									placeholder="Password" disabled>
+							</div>
+						</div>
+						<div id="userFormFooter" class="modal-footer"
+							style="display: none">
+							<button id="addUser" type="button" class="btn btn-success">Add</button>
+							<button id="newUser" type="button" class="btn btn-success">New</button>
+							<button id="updateUser" type="button" class="btn btn-info">Update</button>
+							<button id="editUser" type="button" class="btn btn-info">Edit</button>
+							<button id="deleteUser" type="button" class="btn btn-danger">Delete</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- end of modal -->
+
+		<!-- cards -->
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+						<div class="row pt-md-5 mt-md-3 mb-5">
+							<div class="col-xl-3 col-sm-6 p-2">
+								<div class="card card-common">
+									<div class="card-body">
+										<div class="d-flex justify-content-between">
+											<i class="glyphicon glyphicon-book"></i>
+											<div class="glyphicon glyphicon-book">
+												<h5>Total Books:</h5>
+												<h3 id="totalBooks"></h3>
+											</div>
+										</div>
+									</div>
+									<div class="card-footer text-secondary">
+										<i class="fas fa-sync mr-3"></i> <span>Updated Now</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 p-2">
+								<div class="card card-common">
+									<div class="card-body">
+										<div class="d-flex justify-content-between">
+											<i class="fas fa-money-bill-alt fa-3x text-success"></i>
+											<div class="text-right text-secondary">
+												<h5>Expenses</h5>
+												<h3>€39,000</h3>
+											</div>
+										</div>
+									</div>
+									<div class="card-footer text-secondary">
+										<i class="fas fa-sync mr-3"></i> <span>Updated Now</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 p-2">
+								<div class="card card-common">
+									<div class="card-body">
+										<div class="d-flex justify-content-between">
+											<i class="fas fa-users fa-3x text-info"></i>
+											<div class="text-right text-secondary">
+												<h5>Total Users:</h5>
+												<h3 id="totalUsers"></h3>
+											</div>
+										</div>
+									</div>
+									<div class="card-footer text-secondary">
+										<i class="fas fa-sync mr-3"></i> <span>Updated Now</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end of cards -->
+
+		<!-- tables -->
+		<section>
+			<div class="container-fluid">
+				<div class="row mb-5">
+					<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+						<div class="row align-items-center">
+							<div class="col-xl-6 col-12 mb-4 mb-xl-0">
+								<h3 class="text-muted text-center mb-3">Books</h3>
+								<table id='booksTable'
+									class="table table-striped bg-light text-center">
+									<thead>
+										<tr class="text-muted">
+											<th>#</th>
+											<th>Book Name</th>
+											<th>Author</th>
+											<th>Year Published</th>
+											<th>Info</th>
+										</tr>
+									</thead>
+								</table>
+
+								<!-- pagination -->
+
+								<!-- end of pagination -->
+
+							</div>
+							<div class="col-xl-6 col-12">
+								<h3 class="text-muted text-center mb-3">Users</h3>
+								<table id="usersTableBody"
+									class="table table-dark table-hover text-center">
+									<thead>
+										<tr class="text-muted">
+											<th>#</th>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Username</th>
+											<th>User Type</th>
+										</tr>
+									</thead>
+								</table>
+								<!-- pagination -->
+
+								<!-- end of pagination -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end of tables -->
+
+		<!-- progress / task list -->
+		<section></section>
+		<!-- end of progress / task list -->
+
+		<!-- activities / quick post -->
+		<section></section>
+		<!-- end of activities / quick post -->
+
+		<!-- footer -->
+		<footer>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+						<div class="row border-top pt-3">
+							<div class="col-lg-6 text-center">
+								<ul class="list-inline">
+									<li class="list-inline-item mr-2"><a href="#"
+										class="text-dark">About</a></li>
+									<li class="list-inline-item mr-2"><a href="#"
+										class="text-dark">Support</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-6 text-center">
+								<p>&copy; 2018 Copyright. Template adapted from
+									CodeAndCreate - MG</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	</footer>
+	<!-- end of footer -->
+
+
+</body>
+</html>
