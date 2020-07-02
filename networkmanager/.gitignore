@@ -1,0 +1,9 @@
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!pom.xml
+!/src/
+!script.sql
+!Jenkinsfile
